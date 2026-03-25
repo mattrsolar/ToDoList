@@ -6,6 +6,7 @@ import PlusIcon from "./assets/icons/plus.svg?react"
 import Badge from "./components/badge";
 import Button from "./components/button";
 import ButtonIcon from "./components/button-icon";
+import InputText from "./components/input-text";
 
 
 function App() {
@@ -35,6 +36,9 @@ function App() {
       </div>
       <div className="flex gap-1">
         <ButtonIcon icon={TrashIcon} variant="primary"/>
+      </div>
+      <div>
+        <InputText placeholder="Type your task here"/>
       </div>
     </div>
     
