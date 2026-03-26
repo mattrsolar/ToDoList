@@ -10,6 +10,7 @@ import InputText from "./components/input-text";
 import InputCheckbox from "./components/input-checkbox";
 import Card from "./components/card";
 import Container from "./components/container";
+import Skeleton from "./components/skeleton";
 
 
 function App() {
@@ -30,9 +31,10 @@ function App() {
           <Icon svg={TrashIcon} className="fill-green-base"/>
           <Icon svg={SpinnerIcon} animate/>
         </div>
-        <div>
+        <div className="flex gap-1">
           <Badge variant="secondary">5</Badge>
           <Badge variant="primary">5 de 10</Badge>
+          <Badge loading>Loading</Badge>
 
         </div>
         <div>
@@ -40,17 +42,24 @@ function App() {
         </div>
         <div className="flex gap-1">
           <ButtonIcon icon={TrashIcon} variant="primary"/>
+          <ButtonIcon icon={TrashIcon} loading/>
         </div>
         <div>
           <InputText placeholder="Type your task here"/>
         </div>
         <div>
           <InputCheckbox/>
+          <InputCheckbox loading/>
         </div>
         <div>
           <Card size="md">
             This is a card
           </Card>
+        </div>
+
+        <div>
+          <Skeleton className="h-10"/>
+          <Skeleton className="w-10 h-10"/>
         </div>
       </div>    
     </Container>
