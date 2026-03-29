@@ -1,4 +1,4 @@
-export const TASAK_STORAGE_KEY = "tasks";
+export const TASK_STORAGE_KEY = "tasks";
 
 export enum TaskState {
   CREATING = "creating",
