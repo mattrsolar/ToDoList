@@ -1,75 +1,119 @@
-# React + TypeScript + Vite
+# ToDoList
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple ToDo List application developed with modern technologies to demonstrate good frontend development practices.
 
-Currently, two official plugins are available:
+## Technology Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19**: Main library for building the user interface, using functional components and hooks.
+- **TypeScript**: Programming language that adds static typing to JavaScript, improving code robustness and maintainability.
+- **Vite**: Fast and modern build tool for frontend development.
+- **Tailwind CSS**: Utility-first CSS framework for rapid and consistent styling.
+- **React Router**: Library for routing management in the application.
+- **use-local-storage-state**: Custom hook for data persistence in the browser's localStorage.
 
-## React Compiler
+## Frameworks and Libraries Used
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- **React**: For creating reusable components and state management.
+- **Vite**: For development, build, and preview of the application.
+- **Tailwind CSS**: For styling with utility classes.
+- **React Router**: For navigation between pages.
+- **TypeScript**: For typing and better DX (developer experience).
 
-Note: This will impact Vite dev & build performances.
+## How to Run the Project
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js (version 18 or higher)
+- npm or yarn
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Installation
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd ToDoList
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+### Running in Development
+
+To start the development server:
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The application will be available at `http://localhost:5173` (Vite's default port).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Preview the Build
+
+To view the production build locally:
+```bash
+npm run preview
 ```
+
+## Practices Used
+
+### 1. **Custom Hooks Usage**
+   - **`useTasks`**: Hook to manage tasks state, including localStorage reading, total count, and completed tasks count.
+   - **`useTask`**: Hook for new task creation operations, using temporary states (CREATING) for better UX.
+
+### 2. **Separation of Concerns**
+   - **Models**: TypeScript interfaces and enums definitions (e.g., `Task`, `TaskState`) for consistent typing.
+   - **Hooks**: Business logic isolated in reusable hooks.
+   - **Components**: Modular and reusable UI components, divided into `components` (generic) and `core-components` (application-specific).
+   - **Pages**: Page structure with main layout.
+
+### 3. **Data Persistence**
+   - Use of localStorage to store tasks, ensuring data persists between browser sessions.
+   - `use-local-storage-state` library to facilitate state management synchronized with localStorage.
+
+### 4. **Component-Based Architecture**
+   - Small components focused on a single responsibility.
+   - Use of props and children for flexibility and reusability.
+   - Clear separation between presentation (UI) and logic (hooks).
+
+### 5. **TypeScript for Type Safety**
+   - Interfaces and enums to define data contracts.
+   - Explicit typing in functions, props, and states.
+   - Better autocomplete and error detection during development.
+
+### 6. **Styling with Tailwind CSS**
+   - Utility classes for rapid styling.
+   - Consistent design system through base components (Button, Card, etc.).
+   - Built-in responsiveness and accessibility.
+
+### 7. **React Compiler**
+   - React Compiler enabled for automatic component optimization.
+   - Performance improvement without manual code changes.
+
+
+## Project Structure
+
+```
+src/
+├── components/          # Generic UI components
+├── core-components/     # Application-specific components
+├── hooks/              # Custom hooks
+├── models/             # Type and interface definitions
+├── pages/              # Application pages
+├── assets/             # Images and icons
+├── App.tsx             # Root component
+└── main.tsx            # Entry point
+```
+
+## Features
+
+- ✅ Create new tasks
+- ✅ Mark tasks as completed
+- ✅ Automatic persistence in the browser
+- ✅ Responsive interface
+- ✅ Navigation with React Router
+
+## Contributing
+
+Feel free to open issues and pull requests for improvements or fixes.
