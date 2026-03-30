@@ -3,7 +3,7 @@ import Text from "../components/text";
 import useTasks from "../hooks/use-tasks";
 
 export default function TasksSummary() {
-  const { tasksCount, concludedTasksCount } = useTasks();
+  const { tasksCount, concludedTasksCount, isLoadingTasks } = useTasks();
 
   return (
     <>
@@ -11,7 +11,7 @@ export default function TasksSummary() {
         <Text variant="body-sm-bold" className="!text-gray-300">
           Created tasks
         </Text>
-        <Badge variant="secondary" size="sm">
+        <Badge variant="secondary" size="sm" loading={isLoadingTasks}>
           {tasksCount}
         </Badge>
       </div>
@@ -19,7 +19,7 @@ export default function TasksSummary() {
         <Text variant="body-sm-bold" className="!text-gray-300">
           Done
         </Text>
-        <Badge variant="primary" size="sm">
+        <Badge variant="primary" size="sm" loading={isLoadingTasks}>
           {concludedTasksCount} of {tasksCount}
         </Badge>
       </div>
